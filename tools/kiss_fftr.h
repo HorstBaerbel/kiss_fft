@@ -1,7 +1,7 @@
 #ifndef KISS_FTR_H
 #define KISS_FTR_H
 
-#include "kiss_fft.h"
+#include "../kiss_fft.h"
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -14,6 +14,15 @@ extern "C" {
  
  
  */
+
+struct kiss_fftr_state {
+	kiss_fft_cfg substate;
+	kiss_fft_cpx * tmpbuf;
+	kiss_fft_cpx * super_twiddles;
+#ifdef USE_SIMD
+	void * pad;
+#endif
+};
 
 typedef struct kiss_fftr_state *kiss_fftr_cfg;
 
